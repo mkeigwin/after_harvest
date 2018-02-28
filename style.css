@@ -97,13 +97,21 @@ nav li:hover{
 .ciders{
   height: 100vh;
   width: 25vw;
-  /*background-color: blue;
-  opacity: .5;*/
+  background-color: grey;
+  opacity: 0;
+  /*have to fix to opacity doesnt hide text*/
 }
-.test {
-  position: absolute;
-  top:230vh;
+.ciderdisc {
+  position: relative;
+  background-color: black;
+  height: 20vh;
+  width: 20vh;
+  top:30vh;
   visibility: hidden;
+}
+.ciderdisc p {
+  z-index: 4;
+  color: white;
 }
 .contact{
   background: url('Pic/fall.jpg') no-repeat center center fixed;

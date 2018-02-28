@@ -1,19 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   let ciders = document.querySelectorAll('.ciders')
-  let tests = document.querySelectorAll('.test')
+  let ciderdisc = document.querySelectorAll('.ciderdisc')
 
   let selectCider = (e) => {
-    // SET ALL TO INVISIBLE
-    tests.forEach((test) => test.style.visibility = 'hidden')
-
-    // SET THE ONE JUST CLICKED TO BE VISIBLE
+    ciders.forEach (cider => {cider.style.opacity = '0.5'})
+    e.target.style.opacity = "0"
+    ciderdisc.forEach((disc) => disc.style.visibility = 'hidden')
     e.target.children[0].style.visibility = 'visible'
-
     if (window.innerWidth/2 > e.target.offsetLeft) {
-      e.target.children[0].style.left = '70vw'
+      e.target.children[0].style.left = '50vw'
     } else {
-      e.target.children[0].style.left = 0
+      e.target.children[0].style.left = '5vw'
     }
 
   }
