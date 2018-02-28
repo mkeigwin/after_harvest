@@ -1,25 +1,23 @@
-document.addEventListener("DOMContentLoaded", ()=> {
+document.addEventListener("DOMContentLoaded", () => {
 
-const ciders = document.querySelectorAll('.ciders')
-const test = document.querySelectorAll('.test')
+  let ciders = document.querySelectorAll('.ciders')
+  let tests = document.querySelectorAll('.test')
 
-function selectcider(e) {
-  test.forEach(test => test.style.visibility = 'hidden')
-  const childciders = e.target.childNodes
-  childciders.forEach(cider => cider.style.visibility = 'visible')
-  if (((window.innerWidth)/2) > e.target.offsetLeft) {
-    childciders.forEach(cider => {
-      // console.log(cider)
-      cider.style.left = 450
-      console.log(cider.style.left)
-    })
-  } else {
-    childciders.forEach(cider => {
-      cider.style.left = 0
-      console.log(cider.style.left)
-    })
+  let selectCider = (e) => {
+    // SET ALL TO INVISIBLE
+    tests.forEach((test) => test.style.visibility = 'hidden')
+
+    // SET THE ONE JUST CLICKED TO BE VISIBLE
+    e.target.children[0].style.visibility = 'visible'
+
+    if (window.innerWidth/2 > e.target.offsetLeft) {
+      e.target.children[0].style.left = '70vw'
+    } else {
+      e.target.children[0].style.left = 0
+    }
+
   }
-}
-ciders.forEach(cider => cider.addEventListener('click', selectcider))
+
+  ciders.forEach((cider) => cider.addEventListener('click', selectCider))
 
 })
