@@ -9,9 +9,9 @@ function selectcider(e) {
   childciders.forEach(cider => cider.style.visibility = 'visible')
   if (((window.innerWidth)/2) > e.target.offsetLeft) {
     childciders.forEach(cider => {
-      console.log(cider)
+      // console.log(cider)
       cider.style.left = 450
-      console.log(cider)
+      console.log(cider.style.left)
     })
   } else {
     childciders.forEach(cider => {
