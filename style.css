@@ -11,11 +11,9 @@ a {
   font-size: 18px;
 }
 body{
-  background-color: grey;
+  background-color: #fafafa;
 }
-.main{
-  background: url('Pic/cover.jpg') no-repeat center center fixed;
-  background-size: cover;
+#main{
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -23,30 +21,44 @@ body{
   align-items: center;
   justify-content: center;
 }
+.coverpage {
+  background-size: cover;
+  position: absolute;
+  z-index: -4;
+  height: 100vh;
+  width: 100vw;
+}
 #logo{
   top: 25px;
   left: 50px;
   height: 100px;
   width: 100px;
   box-shadow: 2px 5px 10px black;
-  position: absolute;
+  position: fixed;
+  transition:all 0.5s;
 }
 #title{
-  margin-top: 10vh;
+  margin-top: 15vh;
   text-align: center;
   text-shadow: 2px 2px 10px black;
 }
 h1{
-  color: white;
-  margin: 5px;
+  color: #fafafa;
   font-weight: 900;
   font-size: 60px;
 }
-nav {
-  top:25px;
-  right: 0;
-  width: 40%;
+.navcontainer {
   position: fixed;
+  width: 100vw;
+  display: inline-flex;
+  transition:all 0.5s;
+  z-index: 5;
+}
+nav {
+  width: 40%;
+  position: relative;
+  margin-left:auto;
+  right:0;
 }
 nav ul {
   margin: 0;
@@ -64,57 +76,87 @@ nav li {
   align-items: center;
   color: #edeeef;
   text-shadow: 3px 3px 8px black;
-  font-size: 2px;
+  font-size: 1vh;
   }
 nav li:hover{
   color: #c1c1c1;
-  /*text-shadow: 1px 1px 1px white;*/
 }
-.whoweare{
-  background: url('Pic/kids.jpeg') no-repeat center center fixed;
+
+.buffer{
+  height: 40vh;
+  width: 100vw;
+  background-color: #fafafa;
+  font-size: 50px;
+  color: orange;
+}
+.page2 {
   background-size: cover;
-  height: 100vh;
+  position: absolute;
+  height: 120vh;
+  width: 100vw;
+}
+#whoweare{
+  background-size: cover;
+  height: 90vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.ourcider{
-  background: url('Pic/cider.jpg') no-repeat center center fixed;
-  background-size: cover;
-  height: 100vh;
+#whoweare p {
+  color: #fafafa;
+  text-align: center;
+  width: 70%;
+  margin-right: 20vw;
+}
+#ourcider{
+  height: 90vh;
   width: 100vw;
+  background-color: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: -2;
+}
+#ourcider h2 {
+  margin-bottom: 1vh;
+  font-size: 6vh;
+  font-weight: 900;
+}
+.cidercontainer{
+  background: url('Pic/cider.jpg') no-repeat center center;
+  background-size: cover;
+  height: 70vh;
+  width: 90vw;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-}
-.ciderbox{
-  position: absolute;
-  top:210vh;
+  z-index: 3;
 }
 .ciders{
-  height: 100vh;
+  height: 70vh;
   width: 25vw;
   background-color: rgba(128, 128, 128, 0);
 }
 .ciderdisc {
-  position: relative;
+  position: absolute;
   background-color: black;
-  height: 20vh;
-  width: 20vh;
-  top:30vh;
+  width: 35vw;
+  top:250vh;
   visibility: hidden;
 }
 .ciderdisc p {
   z-index: 4;
-  color: white;
+  color: #fafafa;
+  text-align: center;
 }
-.contact{
+#contact{
   background: url('Pic/fall.jpg') no-repeat center center fixed;
   background-size: cover;
-  height: 100vh;
+  height: 90vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
