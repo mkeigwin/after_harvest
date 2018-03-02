@@ -7,11 +7,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const afterharvest = document.querySelector('#title')
   const logo = document.querySelector('#logo')
   const navcontainer = document.querySelector('.navcontainer')
+  let logoposition = logo.offsetTop + logo.height
+  const ciderinfo = document.querySelectorAll('.ciderinfo')
+  const finalPic = document.querySelector('.finalpic')
+  const mailbutton = document.querySelector('#mailbutton')
 
-  // this should be run inside a screen resize function
-  const logoposition = logo.offsetTop + logo.height
+  function resizeWindow() {
+    logoposition = logo.offsetTop + logo.height
+  }
 
-  function debounce(func, wait = 10, immediate = true) {
+  function debounce(func, wait = 5, immediate = true) {
     var timeout;
     return function() {
       var context = this, args = arguments;
@@ -29,17 +34,20 @@ document.addEventListener("DOMContentLoaded", () => {
   function selectCider(e){
     ciders.forEach((cider) => {cider.style.backgroundColor = 'rgba(128, 128, 128, 0.8)'})
     e.target.style.backgroundColor = 'rgba(128, 128, 128, 0.0001)'
+    // is there a way to use a foreach to do this in one step?
     e.target.children[0].style.visibility = 'visible'
-    if (window.innerWidth/2 > e.target.offsetLeft) {
-      e.target.children[0].style.left = '55vw'
+    e.target.children[1].style.visibility = 'visible'
+    if (window.innerWidth/2.1 > e.target.offsetLeft) {
+      e.target.children[1].style.left = '55vw'
     } else {
-      e.target.children[0].style.left = '10vw'
+      e.target.children[1].style.left = '10vw'
     }
   }
 
   function removeCider(){
     ciders.forEach((cider) => {cider.style.backgroundColor = 'rgba(128, 128, 128, 0.00001)'})
     ciderdisc.forEach((disc) => disc.style.visibility = 'hidden')
+    ciderinfo.forEach((info) => info.style.visibility = 'hidden')
   }
 
   function picturescroll() {
@@ -50,6 +58,14 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       secondimage.style.zIndex = "-5"
       secondimage.style.top = `${(window.innerHeight*.82)}px`
+    }
+    if (window.scrollY >= `${(window.innerHeight * 2.2)}`) {
+      finalPic.style.top = `${window.scrollY/1.5 + (window.innerHeight*1.1)}px`
+      finalPic.style.zIndex = "-2"
+    } else {
+      finalPic.style.top = `${(window.innerHeight*1.1)}px`
+      finalPic.style.zIndex = "-4"
+
     }
     if ((window.scrollY + logoposition) >= afterharvest.offsetTop) {
         navcontainer.style.backgroundColor = 'grey'
@@ -65,8 +81,12 @@ document.addEventListener("DOMContentLoaded", () => {
       logo.style.left = '50px'
     }
   }
+
+
   ciders.forEach((cider) => cider.addEventListener('mouseout', removeCider))
   ciders.forEach((cider) => cider.addEventListener('mouseover', selectCider))
   ciders.forEach((cider) => cider.addEventListener('click', selectCider))
   window.addEventListener('scroll', debounce(picturescroll))
+  window.addEventListener("resize", resizeWindow,picturescroll);
+  mailbutton.addEventListener('click', () => location.href = 'mailto:info@afterharvestcider.com?subject=After Harvest Inquiry')
 })

@@ -5,14 +5,22 @@
   font-size: 20px;
   font-weight: 200;
 }
+
+*, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 a {
   text-decoration: none;
   color:inherit;
   font-size: 18px;
 }
+
 body{
   background-color: #fafafa;
 }
+
 #main{
   height: 100vh;
   width: 100vw;
@@ -21,6 +29,7 @@ body{
   align-items: center;
   justify-content: center;
 }
+
 .coverpage {
   background-size: cover;
   position: absolute;
@@ -28,6 +37,7 @@ body{
   height: 100vh;
   width: 100vw;
 }
+
 #logo{
   top: 25px;
   left: 50px;
@@ -37,16 +47,19 @@ body{
   position: fixed;
   transition:all 0.5s;
 }
+
 #title{
   margin-top: 15vh;
   text-align: center;
   text-shadow: 2px 2px 10px black;
 }
+
 h1{
   color: #fafafa;
   font-weight: 900;
   font-size: 60px;
 }
+
 .navcontainer {
   position: fixed;
   width: 100vw;
@@ -54,12 +67,14 @@ h1{
   transition:all 0.5s;
   z-index: 5;
 }
+
 nav {
   width: 40%;
   position: relative;
   margin-left:auto;
   right:0;
 }
+
 nav ul {
   margin: 0;
   padding:0;
@@ -77,7 +92,8 @@ nav li {
   color: #edeeef;
   text-shadow: 3px 3px 8px black;
   font-size: 1vh;
-  }
+}
+
 nav li:hover{
   color: #c1c1c1;
 }
@@ -89,12 +105,14 @@ nav li:hover{
   font-size: 50px;
   color: orange;
 }
+
 .page2 {
   background-size: cover;
   position: absolute;
   height: 120vh;
   width: 100vw;
 }
+
 #whoweare{
   background-size: cover;
   height: 90vh;
@@ -104,12 +122,14 @@ nav li:hover{
   align-items: center;
   justify-content: center;
 }
+
 #whoweare p {
   color: #fafafa;
   text-align: center;
   width: 70%;
   margin-right: 20vw;
 }
+
 #ourcider{
   height: 90vh;
   width: 100vw;
@@ -120,11 +140,13 @@ nav li:hover{
   flex-direction: column;
   z-index: -2;
 }
+
 #ourcider h2 {
   margin-bottom: 1vh;
   font-size: 6vh;
   font-weight: 900;
 }
+
 .cidercontainer{
   background: url('Pic/cider.jpg') no-repeat center center;
   background-size: cover;
@@ -136,11 +158,34 @@ nav li:hover{
   justify-content: center;
   z-index: 3;
 }
+
 .ciders{
   height: 70vh;
   width: 25vw;
   background-color: rgba(128, 128, 128, 0);
 }
+.ciderinfo{
+  width: 20vw;
+  visibility: hidden;
+  z-index: -2;
+  position: absolute;
+  top: 247vh;
+}
+
+.ciders .apv{
+  color: white;
+}
+
+.ciders .cidername {
+  color: white;
+  line-height: 30px;
+  display: inline-block;
+/*  visibility: hidden;
+  z-index: -2;
+  position: absolute;
+  top: 210;*/
+}
+
 .ciderdisc {
   position: absolute;
   background-color: black;
@@ -148,20 +193,109 @@ nav li:hover{
   top:250vh;
   visibility: hidden;
 }
+
 .ciderdisc p {
   z-index: 4;
   color: #fafafa;
   text-align: center;
 }
-#contact{
-  background: url('Pic/fall.jpg') no-repeat center center fixed;
+
+#contact {
   background-size: cover;
-  height: 90vh;
+  height: 60vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+    /*display: inline-flex;*/
 }
 
+.finalpic {
+  background-size: cover;
+  position: absolute;
+  height: 84vh;
+  width: 100vw;
+}
+
+footer {
+  position: absolute;
+  top: 380vh;
+  width: 100vw;
+  height: 30vh;
+  background-color: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.contactinfo {
+  width: 60%;
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.contactlinks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.fa {
+  margin: 2vw;
+}
+
+.fa:hover {
+  cursor: pointer;
+  color: #55acee !important;
+}
+
+.partner {
+  border-left: 2px solid black;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.partner h2 {
+  font-size: 4vh;
+  font-weight: 900px;
+  margin-bottom: 2vh;
+}
+
+#partner {
+  /*height: 20vh;*/
+  width: 25vw;
+}
+
+.created {
+  position: absolute;
+  top: 25vh;
+  left: 1vw;
+}
+
+.contactinfo h2 {
+  font-weight: 900px;
+  font-size: 4vh;
+}
+
+span {
+  font-size: 2vh;
+}
+
+.matt {
+  font-size: 2.5vh;
+  font-weight: 1000px;
+}
+
+.matt:hover {
+  color: #55acee;
+}
 
