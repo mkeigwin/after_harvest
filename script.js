@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     logoposition = logo.offsetTop + logo.height
   }
 
-  function debounce(func, wait = 5, immediate = true) {
+  function debounce(func, wait = 0, immediate = true) {
     var timeout;
     return function() {
       var context = this, args = arguments;
