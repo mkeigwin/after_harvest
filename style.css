@@ -8,7 +8,7 @@
 
 *, body {
   max-width: 100%;
-  overflow-x: hidden;
+  /*overflow-x: hidden;*/
 }
 
 a {
@@ -298,4 +298,8 @@ span {
 .matt:hover {
   color: #55acee;
 }
+
+  #map {
+        height: 100vh;
+      }
 
