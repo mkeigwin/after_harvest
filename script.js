@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const ciderinfo = document.querySelectorAll('.ciderinfo')
   const finalPic = document.querySelector('.finalpic')
   const mailbutton = document.querySelector('#mailbutton')
+  const navname = document.querySelector('.afterharvest')
 
   function resizeWindow() {
     logoposition = logo.offsetTop + logo.height
@@ -52,17 +53,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function picturescroll() {
     if ((window.scrollY + logoposition) >= afterharvest.offsetTop) {
-        navcontainer.style.backgroundColor = 'rgba(28, 28, 29, 1)'
-        logo.style.height = `${(navcontainer.getBoundingClientRect().height * 3/4)}px`
-        logo.style.width = `${(navcontainer.getBoundingClientRect().height * 3/4)}px`
-        logo.style.top = `${(navcontainer.getBoundingClientRect().height * 1/8)}px`
-        logo.style.left = `${(navcontainer.getBoundingClientRect().height * 1/4)}px`
+      navcontainer.style.backgroundColor = 'rgba(28, 28, 29, 1)'
+      logo.style.height = `${(navcontainer.getBoundingClientRect().height * 3/4)}px`
+      logo.style.width = `${(navcontainer.getBoundingClientRect().height * 3/4)}px`
+      logo.style.top = `${(navcontainer.getBoundingClientRect().height * 1/8)}px`
+      logo.style.left = `${(navcontainer.getBoundingClientRect().height * 1/4)}px`
+      navname.style.opacity = "1"
     } else {
       navcontainer.style.backgroundColor = ''
       logo.style.height = '100px'
       logo.style.width = '100px'
       logo.style.top = '25px'
       logo.style.left = '50px'
+      navname.style.opacity = "0"
     }
   }
 

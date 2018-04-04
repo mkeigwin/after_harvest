@@ -50,6 +50,20 @@ body{
   transition:all 0.5s;
 }
 
+.afterharvest{
+  position: fixed;
+  top: 2vh;
+  left: 100px;
+  transition:all 0.5s;
+  opacity: 0;
+}
+
+.afterharvest span{
+  font-size: 4vh;
+  color: #fafafa;
+
+}
+
 #title{
   margin-top: 15vh;
   text-align: center;
@@ -57,7 +71,7 @@ body{
 }
 
 h1{
-  color: #fafafa;ƒ
+  color: #fafafa;
   font-weight: 900;
   font-size: 60px;
   line-height: 75px;
