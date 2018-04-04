@@ -32,8 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function selectCider(e){
-    ciders.forEach((cider) => {cider.style.backgroundColor = 'rgba(128, 128, 128, 0.8)'})
-    e.target.style.backgroundColor = 'rgba(128, 128, 128, 0.0001)'
+    ciders.forEach((cider) => {cider.style.backgroundColor = 'rgba(28, 28, 29, 0.85)'})
+    e.target.style.backgroundColor = 'rgba(28, 28, 29, 0.0001)'
     // is there a way to use a foreach to do this in one step?
     e.target.children[0].style.visibility = 'visible'
     e.target.children[1].style.visibility = 'visible'
@@ -45,30 +45,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function removeCider(){
-    ciders.forEach((cider) => {cider.style.backgroundColor = 'rgba(128, 128, 128, 0.00001)'})
+    ciders.forEach((cider) => {cider.style.backgroundColor = 'rgba(28, 28, 29, 0.00001)'})
     ciderdisc.forEach((disc) => disc.style.visibility = 'hidden')
     ciderinfo.forEach((info) => info.style.visibility = 'hidden')
   }
 
   function picturescroll() {
-    coverimage.style.top = `${window.scrollY/1.5}px`
-    if (window.scrollY >= `${(window.innerHeight * .4)}`) {
-      secondimage.style.top = `${window.scrollY/2.25 + (window.innerHeight*.82)}px`
-      secondimage.style.zIndex = "-3"
-    } else {
-      secondimage.style.zIndex = "-5"
-      secondimage.style.top = `${(window.innerHeight*.82)}px`
-    }
-    if (window.scrollY >= `${(window.innerHeight * 2.2)}`) {
-      finalPic.style.top = `${window.scrollY/1.5 + (window.innerHeight*1.1)}px`
-      finalPic.style.zIndex = "-2"
-    } else {
-      finalPic.style.top = `${(window.innerHeight*1.1)}px`
-      finalPic.style.zIndex = "-4"
-
-    }
     if ((window.scrollY + logoposition) >= afterharvest.offsetTop) {
-        navcontainer.style.backgroundColor = 'grey'
+        navcontainer.style.backgroundColor = 'rgba(28, 28, 29, 1)'
         logo.style.height = `${(navcontainer.getBoundingClientRect().height * 3/4)}px`
         logo.style.width = `${(navcontainer.getBoundingClientRect().height * 3/4)}px`
         logo.style.top = `${(navcontainer.getBoundingClientRect().height * 1/8)}px`

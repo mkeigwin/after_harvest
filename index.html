@@ -10,6 +10,12 @@
   <link href="https://fonts.googleapis.com/css?family=Mukta+Mahee" rel="stylesheet">
   <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
   <script src="script.js"></script>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="parallax.js"></script>
+
+
 </head>
 <body>
   <div class="navcontainer">
@@ -23,20 +29,28 @@
     </nav>
     <a href="https://www.facebook.com/afterharvestcider/"><img src="Pic/logo.jpg" id="logo"></a>
   </div>
-  <img src="Pic/cover.jpg" alt="" class="coverpage">
-  <div id="main">
-      <div id="title">
-        <h1>After Harvest Cider Company</h1>
-        <h1>Acton, Maine</h1>
-      </div>
+  <div class="parallax-window coverpage" data-parallax="scroll" data-image-src="Pic/top.jpg">
+    <div id="main">
+        <div id="title">
+          <h1>After Harvest Cider Company</h1>
+          <h1>Acton, Maine</h1>
+        </div>
+    </div>
   </div>
-  <div class="buffer">SOMETHING NEEDS TO GO HERE AND CAN'T BE DELETED <br> Maybe something about appples used?</div>
-  <div id="whoweare">
-    <img src="Pic/kids.jpeg" alt="" class="page2">
-    <p>After Harvest Cider Company was created to produce traditional hard cider from unsold high quality Kelly Orchards apples. In its founding years, any spare Kelly Orchards apples from after harvest were used for hard cider. They were pressed and fermented the traditional way: without the use of artificial sweeteners or sulfites and using wild yeast naturally found on the apples. We continue to use these traditional methods and use a blend of traditional cider variety apples creating a tart and dry cider representative of cider from centuries past.</p>
+  <div class="parallax-window casey" data-parallax="scroll" data-image-src="Pic/friendcasey.JPG">
+    <p>Our Story</p>
+  </div>
+  <div class="buffer">
+    <div class="bufferspacer">
+     <p>After Harvest Cider Company was created to produce traditional hard cider from unsold high quality Kelly Orchards apples. In its founding years, any spare Kelly Orchards apples from after harvest were used for hard cider. They were pressed and fermented the traditional way: without the use of artificial sweeteners or sulfites and using wild yeast naturally found on the apples. We continue to use these traditional methods and use a blend of traditional cider variety apples creating a tart and dry cider representative of cider from centuries past.</p>
+    </div>
+  </div>
+  <div class="parallax-window page2" data-parallax="scroll" data-image-src="Pic/kids.jpeg">
+    <div id="whoweare">
+      <h2>Our Ciders</h2>
+    </div> <!-- <img src="Pic/kids.jpeg" alt="" class="page2"> -->
   </div>
   <div id="ourcider">
-    <h2>Our Ciders</h2>
     <div class="cidercontainer">
       <div class="ciders">
         <div class="ciderinfo">
@@ -68,9 +82,11 @@
       </div>
     </div>
   </div>
-  <div id="contact">
-    <h1>this is where to purchase the CIDER!</h1>
-    <img src="Pic/fall.JPG" alt="" class="finalpic">
+  <div class="parallax-window finalpic" data-parallax="scroll" data-image-src="Pic/store.JPG">
+    <div id="contact">
+      <h1>this is where to purchase the CIDER!</h1>
+      <!-- <img src="Pic/fall.JPG" alt="" class="finalpic"> -->
+    </div>
     <footer>
       <div class="created"><span>Web Site Design by </span><a href="http://mattkeigwin.com"><span class="matt">Matt Keigwin</span></a></div>
       <div class="contactinfo">
@@ -86,24 +102,5 @@
       </div>
     </footer>
   </div>
-  <div id="map"></div>
-<script>
-  function initMap() {
-    var myLatLng = {lat: 43.529505, lng: -70.908808};
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 8,
-      center: myLatLng
-    });
-    var marker = new google.maps.Marker({
-      position: myLatlng,
-      title:"Hello World!"
-    });
-    //https://developers.google.com/maps/documentation/javascript/markers#introduction
-  }
-  marker.setMap(map)
-</script>
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMyD4uIaHNRXq-4o8DqcvKREZvW-ffg5k&callback=initMap">
-</script>
 </body>
 </html>
