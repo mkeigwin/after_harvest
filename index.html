@@ -9,12 +9,13 @@
   <link rel="icon" type="image/png" href="Pic/thumb.jpg" />
   <link href="https://fonts.googleapis.com/css?family=Mukta+Mahee" rel="stylesheet">
   <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
-  <script src="script.js"></script>
 
+
+  <script src="script.js"></script>
+ <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="parallax.js"></script>
-
 
 </head>
 <body>
@@ -22,7 +23,7 @@
     <nav>
       <ul id='navBar'>
         <li><a href="#main">Home</a></li>
-        <li><a href="#whoweare">Who We Are</a></li>
+        <li><a href="#whoweare">Our Story</a></li>
         <li><a href="#ourcider">Our Cider</a></li>
         <li><a href="#contact">Find Us</a></li>
       </ul>
@@ -52,6 +53,7 @@
     </div> <!-- <img src="Pic/kids.jpeg" alt="" class="page2"> -->
   </div>
   <div id="ourcider">
+    <p>Click to explore our Ciders</p>
     <div class="cidercontainer">
       <div class="ciders">
         <div class="ciderinfo">
@@ -90,19 +92,58 @@
       <!-- <img src="Pic/fall.JPG" alt="" class="finalpic"> -->
     </div>
     <footer>
-      <div class="created"><span>Web Site Design by </span><a href="http://mattkeigwin.com"><span class="matt">Matt Keigwin</span></a></div>
-      <div class="contactinfo">
-        <h2>Contact</h2>
-        <div class="contactlinks">
-          <i class="fa fa-envelope fa-3x links mailbutton" id="mailbutton" aria-hidden="true" style="color:black"></i>
-          <a href="https://www.facebook.com/afterharvestcider/"><i class="fa fa-facebook-square fa-3x" id="facebook" aria-hidden="true" style="color:black"></i></a>
+      <div id="map" style="height: 50vh; width: 50vw;"></div>
+      <div class="footerdiv">
+        <div class="created"><span>Web Site Design by </span><a href="http://mattkeigwin.com"><span class="matt">Matt Keigwin</span></a></div>
+        <div class="contactinfo">
+          <h2>Contact</h2>
+          <div class="contactlinks">
+            <i class="fa fa-envelope fa-3x links mailbutton" id="mailbutton" aria-hidden="true" style="color:black"></i>
+            <a href="https://www.facebook.com/afterharvestcider/"><i class="fa fa-facebook-square fa-3x" id="facebook" aria-hidden="true" style="color:black"></i></a>
+          </div>
         </div>
-      </div>
-      <div class="partner">
-        <h2>Our Partner</h2>
-        <a href="https://www.kellyorchards.com/index.html"><img src="Pic/kelly.png" id='partner'></a>
+        <div class="partner">
+          <h2>Our Partner</h2>
+          <a href="https://www.kellyorchards.com/index.html"><img src="Pic/kelly.png" id='partner'></a>
+        </div>
       </div>
     </footer>
   </div>
 </body>
+<script type="text/javascript">
+    var locations = [
+      ['The Brew Shoppe, Shapleigh', 43.495202, -70.846930, 4],
+      ['Tully\'s Beer and Wine, Wells', 43.300274, -70.584221, 5],
+      ['Lil General Store, Sanford', 43.410430, -70.742517, 3],
+      ['Cumming\'s Market, Kennebunk', 43.405466, -70.565059, 2],
+      ['H.B. Provisions, Kennebunk', 43.360103, -70.480580, 1],
+      ['Nature\'s Way Market, South Berwick', 43.234714, -70.809440, 6],
+      ['The Farm Stand, South Portland', 43.636814, -70.253078, 7],
+      ['Kelly Orchards, Acton', 43.529505, -70.908808, 8]
+    ];
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 9,
+      center: new google.maps.LatLng(43.431647, -70.569759),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+</script>
 </html>

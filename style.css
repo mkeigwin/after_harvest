@@ -6,10 +6,9 @@
   font-weight: 200;
 }
 
-*, body {
+/**, body {
   max-width: 100%;
-  /*overflow-x: hidden;*/
-}
+}*/
 
 a {
   text-decoration: none;
@@ -18,7 +17,7 @@ a {
 }
 
 body{
-  background-color: #fafafa;
+ background-color: rgba(28, 28, 29, 1);
 }
 
 #main{
@@ -28,14 +27,9 @@ body{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-/*  position: relative;
-  top: 10vh;*/
 }
 
 .coverpage {
-  /*background-size: cover;*/
-  /*position: absolute;*/
-  /*z-index: -4;*/
   height: 100vh;
   width: 100vw;
 }
@@ -45,7 +39,6 @@ body{
   left: 50px;
   height: 100px;
   width: 100px;
-  /*box-shadow: 2px 5px 10px black;*/
   position: fixed;
   transition:all 0.5s;
 }
@@ -207,8 +200,8 @@ nav li:hover{
 .cidercontainer{
   background: url('Pic/cider.jpg') no-repeat center center;
   background-size: cover;
-  height: 70vh;
-  width: 90vw;
+  height: 65vh;
+  width: 85vw;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -217,7 +210,7 @@ nav li:hover{
 }
 
 .ciders{
-  height: 70vh;
+  height: 65vh;
   width: 25vw;
   background-color: rgba(128, 128, 128, 0);
 }
@@ -226,7 +219,7 @@ nav li:hover{
   visibility: hidden;
   z-index: -2;
   position: absolute;
-  top: 247vh;
+  top: 250vh;
 }
 
 .ciders .apv{
@@ -237,15 +230,10 @@ nav li:hover{
   color: white;
   line-height: 30px;
   display: inline-block;
-/*  visibility: hidden;
-  z-index: -2;
-  position: absolute;
-  top: 210;*/
 }
 
 .ciderdisc {
   position: absolute;
-  /*background-color: black;*/
   width: 35vw;
   top:250vh;
   visibility: hidden;
@@ -254,12 +242,10 @@ nav li:hover{
 .ciderdisc p {
   z-index: 4;
   color: #fafafa;
-  /*text-align: center;*/
   text-align: justify;
 }
 
 .ciderdisc p:first-child:first-letter {
-  /*color: #903;*/
   float: left;
   font-family: Georgia;
   font-size: 55px;
@@ -270,29 +256,30 @@ nav li:hover{
 }
 
 #contact {
-  /*background-size: cover;*/
   height: 45vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-    /*display: inline-flex;*/
 }
 
 .finalpic {
-/*  background-size: cover;
-  position: absolute;*/
   height: 45vh;
   width: 100vw;
 }
 
 footer {
-/*  position: absolute;
-  top: 425vh;*/
   width: 100vw;
   height: 90vh;
   background-color: rgba(28, 28, 29, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.footerdiv{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -340,14 +327,10 @@ footer {
 }
 
 #partner {
-  /*height: 20vh;*/
   width: 25vw;
 }
 
 .created {
-  /*position: absolute;
-  top: 25vh;
-  left: 1vw;*/
 }
 
 .contactinfo h2 {
