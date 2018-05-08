@@ -1,14 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const ciders = document.querySelectorAll('.ciders')
-  const ciderdisc = document.querySelectorAll('.ciderdisc')
+  // const ciders = document.querySelectorAll('.ciders')
+  // const ciderdisc = document.querySelectorAll('.ciderdisc')
+  // const ciderinfo = document.querySelectorAll('.ciderinfo')
+
+  const differentciders = document.querySelectorAll('.selectPic')
+  const maincider = document.querySelector('.mainBottlePic')
+  const ciders = ["Pic/farm.jpg","Pic/regal.jpg","Pic/not.jpg","Pic/wild.jpg"]//make sure to also change in HTML
+  let timer = 1
+  let pictureCurrentlyOn = 1
+
   const coverimage = document.querySelector('.coverpage')
   const secondimage = document.querySelector('.page2')
   const afterharvest = document.querySelector('#title')
   const logo = document.querySelector('#logo')
   const navcontainer = document.querySelector('.navcontainer')
   let logoposition = logo.offsetTop + logo.height
-  const ciderinfo = document.querySelectorAll('.ciderinfo')
   const finalPic = document.querySelector('.finalpic')
   const mailbutton = document.querySelector('#mailbutton')
   const navname = document.querySelector('.afterharvest')
@@ -32,24 +39,47 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
+  // function selectCider(e){
+  //   ciders.forEach((cider) => {cider.style.backgroundColor = 'rgba(28, 28, 29, 0.85)'})
+  //   e.target.style.backgroundColor = 'rgba(28, 28, 29, 0.0001)'
+  //   // is there a way to use a foreach to do this in one step?
+  //   e.target.children[0].style.visibility = 'visible'
+  //   e.target.children[1].style.visibility = 'visible'
+  //   if (window.innerWidth/2.1 > e.target.offsetLeft) {
+  //     e.target.children[1].style.left = '55vw'
+  //   } else {
+  //     e.target.children[1].style.left = '10vw'
+  //   }
+  // }
+
   function selectCider(e){
-    ciders.forEach((cider) => {cider.style.backgroundColor = 'rgba(28, 28, 29, 0.85)'})
-    e.target.style.backgroundColor = 'rgba(28, 28, 29, 0.0001)'
-    // is there a way to use a foreach to do this in one step?
-    e.target.children[0].style.visibility = 'visible'
-    e.target.children[1].style.visibility = 'visible'
-    if (window.innerWidth/2.1 > e.target.offsetLeft) {
-      e.target.children[1].style.left = '55vw'
+    maincider.style.backgroundImage = `url(${ciders[e.target.id]})`
+    if (pictureCurrentlyOn >= (ciders.length)) {
+      pictureCurrentlyOn = 0
     } else {
-      e.target.children[1].style.left = '10vw'
+      pictureCurrentlyOn = parseInt(e.target.id) + 1
     }
+    timer = 1
   }
 
-  function removeCider(){
-    ciders.forEach((cider) => {cider.style.backgroundColor = 'rgba(28, 28, 29, 0.00001)'})
-    ciderdisc.forEach((disc) => disc.style.visibility = 'hidden')
-    ciderinfo.forEach((info) => info.style.visibility = 'hidden')
-  }
+  setInterval(() => {
+    console.log(pictureCurrentlyOn)
+    if (timer >= 5) {
+      maincider.style.backgroundImage = `url(${ciders[pictureCurrentlyOn]})`
+      pictureCurrentlyOn++
+      timer=0
+    }
+    timer++
+    if (pictureCurrentlyOn > (ciders.length-1)) {
+      pictureCurrentlyOn = 0
+    }
+  }, 1000);
+
+  // function removeCider(){
+  //   ciders.forEach((cider) => {cider.style.backgroundColor = 'rgba(28, 28, 29, 0.00001)'})
+  //   ciderdisc.forEach((disc) => disc.style.visibility = 'hidden')
+  //   ciderinfo.forEach((info) => info.style.visibility = 'hidden')
+  // }
 
   function picturescroll() {
     if ((window.scrollY + logoposition) >= afterharvest.offsetTop) {
@@ -70,9 +100,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  ciders.forEach((cider) => cider.addEventListener('mouseout', removeCider))
-  ciders.forEach((cider) => cider.addEventListener('mouseover', selectCider))
-  ciders.forEach((cider) => cider.addEventListener('click', selectCider))
+  differentciders.forEach((cider) => cider.addEventListener('click', selectCider))
+  differentciders.forEach((cider) => cider.addEventListener('mouseover', selectCider))
+
+  // ciders.forEach((cider) => cider.addEventListener('mouseout', removeCider))
+  // ciders.forEach((cider) => cider.addEventListener('mouseover', selectCider))
+  // ciders.forEach((cider) => cider.addEventListener('click', selectCider))
   window.addEventListener('scroll', debounce(picturescroll))
   window.addEventListener("resize", resizeWindow,picturescroll);
   mailbutton.addEventListener('click', () => location.href = 'mailto:info@afterharvestcider.com?subject=After Harvest Inquiry')
