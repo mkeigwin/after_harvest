@@ -10,10 +10,30 @@
   <!-- <link href="https://fonts.googleapis.com/css?family=Mukta+Mahee" rel="stylesheet"> -->
   <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
   <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
-
-
   <script src="script.js"></script>
- <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+
+
+<!-- <script>
+var name = '{{ env('API_KEY') }}';
+alert(name);
+</script>
+ -->
+
+<script type='text/javascript' src='config.js'></script>
+
+
+<script async defer type="text/javascript">
+// const config = require('config.js');
+var API_KEY= config.API_KEY
+var script = document.createElement('script');
+script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`;
+document.getElementsByTagName('script')[0].parentNode.appendChild(script);
+</script>
+
+
+
+
+
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="parallax.js"></script>
@@ -56,60 +76,21 @@
     </div>
 
 
-<div class="page3">
-  <div class="bottlecontainer">
-    <div class="mainBottlePic"></div>
-    <div class="bottleselect">
-      <div><img id="0" class="selectPic" src="Pic/farm.jpg"></div>
-      <div><img id="1" class="selectPic" src="Pic/regal.jpg"></div>
-      <div><img id="2" class="selectPic" src="Pic/not.jpg"></div>
-      <div><img id="3" class="selectPic" src="Pic/wild.jpg"></div><!--also change in Javascript-->
+  <div class="page3">
+    <div class="bottlecontainer">
+      <div class="mainBottlePic"></div>
+      <div class="bottleselect">
+        <div><img id="0" class="selectPic" src="Pic/farm.jpg"></div>
+        <div><img id="1" class="selectPic" src="Pic/regal.jpg"></div>
+        <div><img id="2" class="selectPic" src="Pic/not.jpg"></div>
+        <div><img id="3" class="selectPic" src="Pic/wild.jpg"></div><!--also change in Javascript-->
+      </div>
+      <div class="bottleInfo">
+        <i class="fa fa-window-close bottleClose" aria-hidden="true"></i>
+        <div class="moreInfoPic"></div>
+      </div>
     </div>
-    <div class="bottleInfo"><p>Is this working</p></div>
   </div>
-</div>
-
-
-
-
-
-  <!-- <div id="ourcider">
-    <p>Click to explore our Ciders</p>
-    <div class="cidercontainer">
-      <div class="ciders">
-        <div class="ciderinfo">
-          <h2 class="cidername">Farmhouse Brett</h2>
-          <h3 class="apv">5.0% ABV</h3>
-        </div>
-        <div class="ciderdisc"><p>The Farmhouse Brett is inoculated using Brettanomyces claussenii, a type of wild yeast found on the skins of fruit.  Brettanomyces yeasts are able to ferment longer chain saccharides and starches resulting in quite dry ciders.  The Farmhouse Brett exhibits the slightly funky characteristics of the yeast with flavors and aromas ranging from pineapple to the traditional Brett "horse blanket".</p></div>
-      </div>
-      <div class="ciders">
-        <div class="ciderinfo">
-          <h2 class="cidername">Nottingham</h2>
-          <h3 class="apv">5.1% ABV</h3>
-        </div>
-        <div class="ciderdisc"><p>The Nottingham is a traditional English style cider fermented with an English ale yeast.  It is naturally carbonated through bottle conditioning.  The Nottingham evenly combines the apples' tannins, acidity, and sugar creating a well-rounded and balanced cider.</p></div>
-      </div>
-      <div class="ciders">
-        <div class="ciderinfo">
-          <h2 class="cidername">Regal Lager</h2>
-          <h3 class="apv">5.5% ABV</h3>
-        </div>
-        <div class="ciderdisc"><p>The Regal Lager uses lager yeast opposed to the conventional ale yeast.  It is fermented slowly at a cool temperature, finishing in bottle conditioning with a lively carbonation and a crisp mouthfeel.  The lager yeast adds little flavor to the cider letting the natural flavors from the apples creating a pleasantly unique cider.</p></div>
-      </div>
-      <div class="ciders">
-        <div class="ciderinfo">
-          <h2 class="cidername">Wild</h2>
-          <h3 class="apv">5.4% ABV</h3>
-        </div>
-        <div class="ciderdisc"><p>The Wild is the product of natural fermentation.  The wild yeast and bacteria native to Kelly Orchards, which has been the site of apple orchards for over 70 years, gives this cider its unique flavor.  The Wild is slowly fermented at cellar temperatures over the winter months resulting in a unique tart and dry cider truly exhibiting the terroir of the orchard.</p></div>
-      </div>
-    </div>
-  </div> -->
-
-
-
-
 
 
   <div class="parallax-window finalpic" data-parallax="scroll" data-image-src="Pic/fall.JPG">
@@ -137,6 +118,19 @@
     </footer>
   </div>
 </body>
+
+
+<!-- <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+    </script> -->
+
+
 <script type="text/javascript">
     var locations = [
       ['The Brew Shoppe, Shapleigh', 43.495202, -70.846930, 4],
@@ -149,22 +143,19 @@
       ['Kelly Orchards, Acton', 43.529505, -70.908808, 8]
     ];
 
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 9,
-      center: new google.maps.LatLng(43.431647, -70.569759),
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
 
+function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 43.431647, lng: -70.569759},
+          zoom: 9
+        })
     var infowindow = new google.maps.InfoWindow();
-
     var marker, i;
-
     for (i = 0; i < locations.length; i++) {
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(locations[i][1], locations[i][2]),
         map: map
       });
-
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
           infowindow.setContent(locations[i][0]);
@@ -172,5 +163,11 @@
         }
       })(marker, i));
     }
+ }
+
+
 </script>
+
+
+
 </html>

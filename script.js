@@ -1,9 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // const ciders = document.querySelectorAll('.ciders')
-  // const ciderdisc = document.querySelectorAll('.ciderdisc')
-  // const ciderinfo = document.querySelectorAll('.ciderinfo')
-
   const differentciders = document.querySelectorAll('.selectPic')
   const bottleselect = document.querySelector('.bottleselect')
   const maincider = document.querySelector('.mainBottlePic')
@@ -13,7 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const bottlecontainer = document.querySelector('.bottlecontainer')
   const bottleInfo = document.querySelector('.bottleInfo')
   let picClicked
-
+  const moreInfoPic = document.querySelector('.moreInfoPic')
+  const closeButton = document.querySelector('.bottleClose')
 
   const coverimage = document.querySelector('.coverpage')
   const secondimage = document.querySelector('.page2')
@@ -44,19 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  // function selectCider(e){
-  //   ciders.forEach((cider) => {cider.style.backgroundColor = 'rgba(28, 28, 29, 0.85)'})
-  //   e.target.style.backgroundColor = 'rgba(28, 28, 29, 0.0001)'
-  //   // is there a way to use a foreach to do this in one step?
-  //   e.target.children[0].style.visibility = 'visible'
-  //   e.target.children[1].style.visibility = 'visible'
-  //   if (window.innerWidth/2.1 > e.target.offsetLeft) {
-  //     e.target.children[1].style.left = '55vw'
-  //   } else {
-  //     e.target.children[1].style.left = '10vw'
-  //   }
-  // }
-
   function selectCider(e){
     maincider.style.backgroundImage = `url(${ciders[e.target.id]})`
     if (pictureCurrentlyOn >= (ciders.length)) {
@@ -81,12 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }, 1000);
 
-  // function removeCider(){
-  //   ciders.forEach((cider) => {cider.style.backgroundColor = 'rgba(28, 28, 29, 0.00001)'})
-  //   ciderdisc.forEach((disc) => disc.style.visibility = 'hidden')
-  //   ciderinfo.forEach((info) => info.style.visibility = 'hidden')
-  // }
-
   function picturescroll() {
     if ((window.scrollY + logoposition) >= afterharvest.offsetTop) {
       navcontainer.style.backgroundColor = 'rgba(28, 28, 29, 1)'
@@ -110,26 +88,45 @@ document.addEventListener("DOMContentLoaded", () => {
       if (picClicked < 0) {
         picClicked = ciders.length - 1
       }
-      bottleInfo.style.opacity = 0
-      bottleInfo.style.display = 'flex'
+      moreInfoPic.style.backgroundImage = `url(${ciders[picClicked]})`
+      moreInfoPic.style.height = `${maincider.getBoundingClientRect().height}px`
+      moreInfoPic.style.width = `${maincider.getBoundingClientRect().width}px`
+      bottleInfo.style.display = 'block'
       maincider.style.display = 'none'
       bottleselect.style.display = 'none'
+      setTimeout(()=>{
+      bottleInfo.style.display = 'flex'
       bottlecontainer.style.height = '80vh'
       bottlecontainer.style.width = '50vw'
+      moreInfoPic.style.width = '30vw'
+      moreInfoPic.style.height = '30vh'
+      },0001)
       setTimeout(()=>{
-        bottleInfo.style.opacity = 1
-      },1000)
+        closeBox()
+      },500)
+    }
+
+    function closeBox() {
+        closeButton.style.top = `${bottleInfo.offsetTop}px`
+        if (window.innerWidth > 1000) {
+          closeButton.style.left = `${bottleInfo.offsetLeft + (bottleInfo.getBoundingClientRect().width*(9/10) - closeButton.getBoundingClientRect().width)}px`
+          console.log('got here')
+        } else {
+          closeButton.style.left = `${bottleInfo.offsetLeft + (bottleInfo.getBoundingClientRect().width*(7/8) - closeButton.getBoundingClientRect().width)}px`
+
+        }
+        // console.log(window.innerWidth)
     }
 
 debounce(picturescroll)
 resizeWindow
   window.addEventListener('scroll', debounce(picturescroll))
-  window.addEventListener("resize", resizeWindow,picturescroll);
+
+  window.addEventListener("resize", resizeWindow,picturescroll,closeBox)
+  window.addEventListener("resize", closeBox)
+
   differentciders.forEach((cider) => cider.addEventListener('click', selectCider))
   differentciders.forEach((cider) => cider.addEventListener('mouseover', selectCider))
   maincider.addEventListener('click', openDisc)
-  // ciders.forEach((cider) => cider.addEventListener('mouseout', removeCider))
-  // ciders.forEach((cider) => cider.addEventListener('mouseover', selectCider))
-  // ciders.forEach((cider) => cider.addEventListener('click', selectCider))
   mailbutton.addEventListener('click', () => location.href = 'mailto:info@afterharvestcider.com?subject=After Harvest Inquiry')
 })
