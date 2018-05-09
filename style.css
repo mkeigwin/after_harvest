@@ -205,7 +205,20 @@ nav li:hover{
   height: 70vh;
   width: 80vw;
   background-color: yellow;
+
+
+  transition: all 1s;
 }
+  .bottleInfo {
+    display: none;
+    background-color: green;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: all .5s;
+  }
 
 .mainBottlePic{
   height: 70vh;

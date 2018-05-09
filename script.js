@@ -5,10 +5,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // const ciderinfo = document.querySelectorAll('.ciderinfo')
 
   const differentciders = document.querySelectorAll('.selectPic')
+  const bottleselect = document.querySelector('.bottleselect')
   const maincider = document.querySelector('.mainBottlePic')
   const ciders = ["Pic/farm.jpg","Pic/regal.jpg","Pic/not.jpg","Pic/wild.jpg"]//make sure to also change in HTML
   let timer = 1
   let pictureCurrentlyOn = 1
+  const bottlecontainer = document.querySelector('.bottlecontainer')
+  const bottleInfo = document.querySelector('.bottleInfo')
+  let picClicked
+
 
   const coverimage = document.querySelector('.coverpage')
   const secondimage = document.querySelector('.page2')
@@ -62,8 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
     timer = 1
   }
 
+
+
   setInterval(() => {
-    console.log(pictureCurrentlyOn)
     if (timer >= 5) {
       maincider.style.backgroundImage = `url(${ciders[pictureCurrentlyOn]})`
       pictureCurrentlyOn++
@@ -99,14 +105,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+    function openDisc() {
+      picClicked = pictureCurrentlyOn - 1
+      if (picClicked < 0) {
+        picClicked = ciders.length - 1
+      }
+      bottleInfo.style.opacity = 0
+      bottleInfo.style.display = 'flex'
+      maincider.style.display = 'none'
+      bottleselect.style.display = 'none'
+      bottlecontainer.style.height = '80vh'
+      bottlecontainer.style.width = '50vw'
+      setTimeout(()=>{
+        bottleInfo.style.opacity = 1
+      },1000)
+    }
 
+debounce(picturescroll)
+resizeWindow
+  window.addEventListener('scroll', debounce(picturescroll))
+  window.addEventListener("resize", resizeWindow,picturescroll);
   differentciders.forEach((cider) => cider.addEventListener('click', selectCider))
   differentciders.forEach((cider) => cider.addEventListener('mouseover', selectCider))
-
+  maincider.addEventListener('click', openDisc)
   // ciders.forEach((cider) => cider.addEventListener('mouseout', removeCider))
   // ciders.forEach((cider) => cider.addEventListener('mouseover', selectCider))
   // ciders.forEach((cider) => cider.addEventListener('click', selectCider))
-  window.addEventListener('scroll', debounce(picturescroll))
-  window.addEventListener("resize", resizeWindow,picturescroll);
   mailbutton.addEventListener('click', () => location.href = 'mailto:info@afterharvestcider.com?subject=After Harvest Inquiry')
 })
