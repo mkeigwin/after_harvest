@@ -4,6 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const bottleselect = document.querySelector('.bottleselect')
   const maincider = document.querySelector('.mainBottlePic')
   const ciders = ["Pic/farm.jpg","Pic/regal.jpg","Pic/not.jpg","Pic/wild.jpg"]//make sure to also change in HTML
+  ciderDiscriptions = ['The Farmhouse Brett is inoculated using Brettanomyces claussenii, a type of wild yeast found on the skins of fruit.  Brettanomyces yeasts are able to ferment longer chain saccharides and starches resulting in quite dry ciders.  The Farmhouse Brett exhibits the slightly funky characteristics of the yeast with flavors and aromas ranging from pineapple to the traditional Brett "horse blanket".',
+                      'The Regal Lager uses lager yeast opposed to the conventional ale yeast.  It is fermented slowly at a cool temperature, finishing in bottle conditioning with a lively carbonation and a crisp mouthfeel.  The lager yeast adds little flavor to the cider letting the natural flavors from the apples creating a pleasantly unique cider.',
+                      'The Nottingham is a traditional English style cider fermented with an English ale yeast.  It is naturally carbonated through bottle conditioning.  The Nottingham evenly combines the apples\' tannins, acidity, and sugar creating a well-rounded and balanced cider',
+                      'The Wild is the product of natural fermentation.  The wild yeast and bacteria native to Kelly Orchards, which has been the site of apple orchards for over 70 years, gives this cider its unique flavor.  The Wild is slowly fermented at cellar temperatures over the winter months resulting in a unique tart and dry cider truly exhibiting the terroir of the orchard.']
+  ciderAPV = ['5.0% ABV','5.5% ABV','5.1% ABV','5.4% ABV']
+  ciderName = ['Farmhouse Brett','Regal Lager','Nottingham','Wild']
   let timer = 1
   let pictureCurrentlyOn = 1
   const bottlecontainer = document.querySelector('.bottlecontainer')
@@ -11,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let picClicked
   const moreInfoPic = document.querySelector('.moreInfoPic')
   const closeButton = document.querySelector('.bottleClose')
-
   const coverimage = document.querySelector('.coverpage')
   const secondimage = document.querySelector('.page2')
   const afterharvest = document.querySelector('#title')
@@ -54,8 +59,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   setInterval(() => {
-    if (timer >= 5) {
-      maincider.style.backgroundImage = `url(${ciders[pictureCurrentlyOn]})`
+ if (timer >= 5) {
+
+
+      pictureZoom()
+      // endPictureZoom()
+      // console.log(`this is after the end ${maincider.style.transform}`)
+      // maincider.style.backgroundImage = `url(${ciders[pictureCurrentlyOn]})`
+      // console.log(`this is after the strt ${maincider.style.transform}`)
+      // startPictureZoom()
+
+
       pictureCurrentlyOn++
       timer=0
     }
@@ -92,17 +106,20 @@ document.addEventListener("DOMContentLoaded", () => {
       moreInfoPic.style.height = `${maincider.getBoundingClientRect().height}px`
       moreInfoPic.style.width = `${maincider.getBoundingClientRect().width}px`
       bottleInfo.style.display = 'block'
+      closeButton.style.display = 'none'
       maincider.style.display = 'none'
       bottleselect.style.display = 'none'
       setTimeout(()=>{
-      bottleInfo.style.display = 'flex'
       bottlecontainer.style.height = '80vh'
       bottlecontainer.style.width = '50vw'
       moreInfoPic.style.width = '30vw'
       moreInfoPic.style.height = '30vh'
+      bottleInfo.style.display = 'flex'
       },0001)
       setTimeout(()=>{
         closeBox()
+        closeButton.style.display = 'block'
+        // this is where I'd append discriptions of cider
       },500)
     }
 
@@ -113,18 +130,58 @@ document.addEventListener("DOMContentLoaded", () => {
           console.log('got here')
         } else {
           closeButton.style.left = `${bottleInfo.offsetLeft + (bottleInfo.getBoundingClientRect().width*(7/8) - closeButton.getBoundingClientRect().width)}px`
-
         }
-        // console.log(window.innerWidth)
     }
 
-debounce(picturescroll)
-resizeWindow
-  window.addEventListener('scroll', debounce(picturescroll))
+    function close(){
+      bottleInfo.style.display = 'none'
+      maincider.style.display = 'flex'
+      bottleselect.style.display = 'flex'
+      bottlecontainer.style.height = '70vh'
+      bottlecontainer.style.width = '80vw'
+      timer=1
+      pictureCurrentlyOn=picClicked
+      maincider.style.backgroundImage = `url(${ciders[pictureCurrentlyOn]})`
+      pictureCurrentlyOn++
+      if (pictureCurrentlyOn > (ciders.length-1)) {
+        pictureCurrentlyOn = 0
+      }
+    }
 
+
+
+    function startPictureZoom() {
+      maincider.style.transition = "all 5s";
+      maincider.style.transform = "scale(1.1,1.1)"
+    }
+
+    function endPictureZoom() {
+      maincider.style.transition = "all 0s"
+      maincider.style.transform = "scale(1,1)"
+    }
+
+
+    function pictureZoom() {
+      maincider.style.transition = "all 0s"
+      maincider.style.backgroundImage = `url(${ciders[pictureCurrentlyOn]})`
+      maincider.style.transform = "none"
+      console.log(`BEFORE ${maincider.style.transition} and ${maincider.style.transform}`)
+      maincider.style.transition = "all 5s"
+      maincider.style.transform = "scale(1.1,1.1)"
+      console.log(`BEFORE ${maincider.style.transition} and ${maincider.style.transform}`)
+    }
+
+  startPictureZoom()
+
+
+
+  debounce(picturescroll)
+  resizeWindow()
+  window.addEventListener('scroll', debounce(picturescroll))
   window.addEventListener("resize", resizeWindow,picturescroll,closeBox)
   window.addEventListener("resize", closeBox)
-
+  closeButton.addEventListener('click', close)
+  // maincider.addEventListener('mouseover', pictureZoom)
   differentciders.forEach((cider) => cider.addEventListener('click', selectCider))
   differentciders.forEach((cider) => cider.addEventListener('mouseover', selectCider))
   maincider.addEventListener('click', openDisc)

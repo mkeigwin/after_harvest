@@ -42,14 +42,14 @@ body{
   height: 100px;
   width: 100px;
   position: fixed;
-  transition:all 0.5s;
+  transition:all .5s;
 }
 
 .afterharvest{
   position: fixed;
   top: 2vh;
   left: 100px;
-  transition:all 0.5s;
+  transition:all .5s;
   opacity: 0;
 }
 
@@ -76,7 +76,7 @@ h1{
   position: fixed;
   width: 100vw;
   display: inline-flex;
-  transition:all 0.5s;
+  transition:all 1;
   z-index: 5;
 }
 
@@ -205,7 +205,10 @@ nav li:hover{
   height: 70vh;
   width: 80vw;
   background-color: yellow;
-  transition: all .5s;
+  transition: all .3s;
+
+  overflow: hidden;
+
 }
   .bottleInfo {
     display: none;
@@ -215,7 +218,7 @@ nav li:hover{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: all .5s;
+    transition: all .3s;
   }
 
 .mainBottlePic{
@@ -224,7 +227,14 @@ nav li:hover{
   background-color: blue;
   background: url('Pic/farm.jpg') no-repeat center center;
   background-size: cover;
+
+  transition: all 5s;
 }
+
+.zoomEffect {
+  /*transform: scale(1.2);*/
+}
+
 
 .bottleselect{
   width: 150px;
@@ -234,6 +244,7 @@ nav li:hover{
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  z-index: 2;
 }
 
 .selectPic {
@@ -250,7 +261,7 @@ nav li:hover{
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  transition: all .5s;
+  transition: all .3s;
 }
 
 
