@@ -11,21 +11,12 @@
   <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
   <script src="script.js"></script>
 
-
-
-<!-- <script type='text/javascript' src='config.js'></script> -->
 <script async defer type="text/javascript">
-// const config = require('config.js');
-var API_KEY= process.env.API_KEY
+var API_KEY= 'AIzaSyBMyD4uIaHNRXq-4o8DqcvKREZvW-ffg5k'
 var script = document.createElement('script');
 script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`;
 document.getElementsByTagName('script')[0].parentNode.appendChild(script);
 </script>
-
-
-
-
-
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="parallax.js"></script>
@@ -70,12 +61,13 @@ document.getElementsByTagName('script')[0].parentNode.appendChild(script);
 
   <div class="page3">
     <div class="bottlecontainer">
-      <div class="mainBottlePic zoomEffect"></div>
+      <div class="mainBottlePic"><div class="details"><h2 class="cidername">Farmhouse Brett</h2><h2 class="ciderapv">5.0% ABV</h2></div></div>
       <div class="bottleselect">
-        <div><img id="0" class="selectPic" src="Pic/farm.jpg"></div>
+        <div><img id="0" class="selectPic testerz" src="Pic/farm.jpg"></div>
         <div><img id="1" class="selectPic" src="Pic/regal.jpg"></div>
         <div><img id="2" class="selectPic" src="Pic/not.jpg"></div>
-        <div><img id="3" class="selectPic" src="Pic/wild.jpg"></div><!--also change in Javascript-->
+        <div><img id="3" class="selectPic" src="Pic/wild.jpg"></div><!--also change pictures in Javascript-->
+        <div class="slider"></div>
       </div>
       <div class="bottleInfo">
         <i class="fa fa-window-close bottleClose" aria-hidden="true"></i>
@@ -87,8 +79,7 @@ document.getElementsByTagName('script')[0].parentNode.appendChild(script);
 
   <div class="parallax-window finalpic" data-parallax="scroll" data-image-src="Pic/fall.JPG">
     <div id="contact">
-      <h1>this is where to purchase the CIDER!</h1>
-      <h1>I need to finish here and below</h1>
+      <h2>Where to Find Us</h2>
     </div>
     <footer>
       <div id="map" style="height: 50vh; width: 50vw;"></div>
@@ -147,7 +138,4 @@ function initMap() {
 
 
 </script>
-
-
-
 </html>

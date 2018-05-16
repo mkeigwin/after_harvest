@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
                       'The Regal Lager uses lager yeast opposed to the conventional ale yeast.  It is fermented slowly at a cool temperature, finishing in bottle conditioning with a lively carbonation and a crisp mouthfeel.  The lager yeast adds little flavor to the cider letting the natural flavors from the apples creating a pleasantly unique cider.',
                       'The Nottingham is a traditional English style cider fermented with an English ale yeast.  It is naturally carbonated through bottle conditioning.  The Nottingham evenly combines the apples\' tannins, acidity, and sugar creating a well-rounded and balanced cider',
                       'The Wild is the product of natural fermentation.  The wild yeast and bacteria native to Kelly Orchards, which has been the site of apple orchards for over 70 years, gives this cider its unique flavor.  The Wild is slowly fermented at cellar temperatures over the winter months resulting in a unique tart and dry cider truly exhibiting the terroir of the orchard.']
-  ciderAPV = ['5.0% ABV','5.5% ABV','5.1% ABV','5.4% ABV']
-  ciderName = ['Farmhouse Brett','Regal Lager','Nottingham','Wild']
+  ciderAPVs = ['5.0% ABV','5.5% ABV','5.1% ABV','5.4% ABV']
+  ciderNames = ['Farmhouse Brett','Regal Lager','Nottingham','Wild']
   let timer = 1
   let pictureCurrentlyOn = 1
   const bottlecontainer = document.querySelector('.bottlecontainer')
@@ -26,6 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const finalPic = document.querySelector('.finalpic')
   const mailbutton = document.querySelector('#mailbutton')
   const navname = document.querySelector('.afterharvest')
+  const cidername = document.querySelector('.cidername')
+  const ciderapv = document.querySelector('.ciderapv')
 
   function resizeWindow() {
     logoposition = logo.offsetTop + logo.height
@@ -60,16 +62,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setInterval(() => {
  if (timer >= 5) {
-
-
-      pictureZoom()
-      // endPictureZoom()
-      // console.log(`this is after the end ${maincider.style.transform}`)
-      // maincider.style.backgroundImage = `url(${ciders[pictureCurrentlyOn]})`
-      // console.log(`this is after the strt ${maincider.style.transform}`)
-      // startPictureZoom()
-
-
+      maincider.style.backgroundImage = `url(${ciders[pictureCurrentlyOn]})`
+      cidername.innerHTML = ciderNames[pictureCurrentlyOn]
+      ciderapv.innerHTML = ciderAPVs[pictureCurrentlyOn]
       pictureCurrentlyOn++
       timer=0
     }
@@ -149,39 +144,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-
-    function startPictureZoom() {
-      maincider.style.transition = "all 5s";
-      maincider.style.transform = "scale(1.1,1.1)"
-    }
-
-    function endPictureZoom() {
-      maincider.style.transition = "all 0s"
-      maincider.style.transform = "scale(1,1)"
-    }
-
-
-    function pictureZoom() {
-      maincider.style.transition = "all 0s"
-      maincider.style.backgroundImage = `url(${ciders[pictureCurrentlyOn]})`
-      maincider.style.transform = "none"
-      console.log(`BEFORE ${maincider.style.transition} and ${maincider.style.transform}`)
-      maincider.style.transition = "all 5s"
-      maincider.style.transform = "scale(1.1,1.1)"
-      console.log(`BEFORE ${maincider.style.transition} and ${maincider.style.transform}`)
-    }
-
-  startPictureZoom()
-
-
-
   debounce(picturescroll)
   resizeWindow()
   window.addEventListener('scroll', debounce(picturescroll))
   window.addEventListener("resize", resizeWindow,picturescroll,closeBox)
   window.addEventListener("resize", closeBox)
   closeButton.addEventListener('click', close)
-  // maincider.addEventListener('mouseover', pictureZoom)
   differentciders.forEach((cider) => cider.addEventListener('click', selectCider))
   differentciders.forEach((cider) => cider.addEventListener('mouseover', selectCider))
   maincider.addEventListener('click', openDisc)
