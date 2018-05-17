@@ -28,6 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const navname = document.querySelector('.afterharvest')
   const cidername = document.querySelector('.cidername')
   const ciderapv = document.querySelector('.ciderapv')
+  const slider = document.querySelector('.slider')
+  const details = document.querySelector('.details')
+  const focusName = document.querySelector('.focusName')
+  const allTheDetails = document.querySelector('.allTheDetails')
+  const fullDescButton = document.querySelector('.fullDescButton')
 
   function resizeWindow() {
     logoposition = logo.offsetTop + logo.height
@@ -104,17 +109,20 @@ document.addEventListener("DOMContentLoaded", () => {
       closeButton.style.display = 'none'
       maincider.style.display = 'none'
       bottleselect.style.display = 'none'
+      fullDescButton.style.display = 'none'
       setTimeout(()=>{
-      bottlecontainer.style.height = '80vh'
-      bottlecontainer.style.width = '50vw'
-      moreInfoPic.style.width = '30vw'
-      moreInfoPic.style.height = '30vh'
-      bottleInfo.style.display = 'flex'
+        bottlecontainer.style.height = '80vh'
+        bottlecontainer.style.width = '50vw'
+        moreInfoPic.style.width = '200px'
+        moreInfoPic.style.height = '200px'
+        bottleInfo.style.display = 'flex'
+        focusName.innerHTML = ciderNames[picClicked]
+        allTheDetails.innerHTML = ciderDiscriptions[picClicked]
+        allTheDetails.classList.add("bigFirst")
       },0001)
       setTimeout(()=>{
         closeBox()
         closeButton.style.display = 'block'
-        // this is where I'd append discriptions of cider
       },500)
     }
 
@@ -122,7 +130,6 @@ document.addEventListener("DOMContentLoaded", () => {
         closeButton.style.top = `${bottleInfo.offsetTop}px`
         if (window.innerWidth > 1000) {
           closeButton.style.left = `${bottleInfo.offsetLeft + (bottleInfo.getBoundingClientRect().width*(9/10) - closeButton.getBoundingClientRect().width)}px`
-          console.log('got here')
         } else {
           closeButton.style.left = `${bottleInfo.offsetLeft + (bottleInfo.getBoundingClientRect().width*(7/8) - closeButton.getBoundingClientRect().width)}px`
         }
@@ -137,7 +144,13 @@ document.addEventListener("DOMContentLoaded", () => {
       timer=1
       pictureCurrentlyOn=picClicked
       maincider.style.backgroundImage = `url(${ciders[pictureCurrentlyOn]})`
+      focusName.innerHTML = ""
+      allTheDetails.innerHTML = ""
+      cidername.innerHTML = ciderNames[pictureCurrentlyOn]
+      ciderapv.innerHTML = ciderAPVs[pictureCurrentlyOn]
+      details.style.width = '100%'
       pictureCurrentlyOn++
+      fullDescButton.style.display = 'block'
       if (pictureCurrentlyOn > (ciders.length-1)) {
         pictureCurrentlyOn = 0
       }
@@ -146,6 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   debounce(picturescroll)
   resizeWindow()
+  picturescroll()
   window.addEventListener('scroll', debounce(picturescroll))
   window.addEventListener("resize", resizeWindow,picturescroll,closeBox)
   window.addEventListener("resize", closeBox)
@@ -153,5 +167,6 @@ document.addEventListener("DOMContentLoaded", () => {
   differentciders.forEach((cider) => cider.addEventListener('click', selectCider))
   differentciders.forEach((cider) => cider.addEventListener('mouseover', selectCider))
   maincider.addEventListener('click', openDisc)
+  fullDescButton.addEventListener('click', openDisc)
   mailbutton.addEventListener('click', () => location.href = 'mailto:info@afterharvestcider.com?subject=After Harvest Inquiry')
 })
