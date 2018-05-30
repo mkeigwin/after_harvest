@@ -33,11 +33,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const focusName = document.querySelector('.focusName')
   const allTheDetails = document.querySelector('.allTheDetails')
   const fullDescButton = document.querySelector('.fullDescButton')
+  const contact = document.querySelector('#contact')
+  const buffer = document.querySelector('.buffer')
+  let scrollAway = 0
+  let openedDisc = 0
 
   function resizeWindow() {
     logoposition = logo.offsetTop + logo.height
   }
-
   function debounce(func, wait = 0, immediate = true) {
     var timeout;
     return function() {
@@ -55,6 +58,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function selectCider(e){
     maincider.style.backgroundImage = `url(${ciders[e.target.id]})`
+    cidername.innerHTML = ciderNames[e.target.id]
+    ciderapv.innerHTML = ciderAPVs[e.target.id]
     if (pictureCurrentlyOn >= (ciders.length)) {
       pictureCurrentlyOn = 0
     } else {
@@ -80,6 +85,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 1000);
 
   function picturescroll() {
+    if (window.scrollY > (buffer.offsetTop - window.innerHeight/10) && window.scrollY < contact.offsetTop) {
+      scrollAway = 1
+    }
+
+    if ((window.scrollY < (buffer.offsetTop - window.innerHeight/10) || window.scrollY > contact.offsetTop) && scrollAway === 1 && openedDisc === 1) {
+      close()
+      scrollAway = 0
+      console.log('getting here')
+    }
+
     if ((window.scrollY + logoposition) >= afterharvest.offsetTop) {
       navcontainer.style.backgroundColor = 'rgba(28, 28, 29, 1)'
       logo.style.height = `${(navcontainer.getBoundingClientRect().height * 3/4)}px`
@@ -98,6 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
     function openDisc() {
+      openedDisc = 1
       picClicked = pictureCurrentlyOn - 1
       if (picClicked < 0) {
         picClicked = ciders.length - 1
@@ -136,6 +152,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function close(){
+      openedDisc = 0
+      console.log(openedDisc)
       bottleInfo.style.display = 'none'
       maincider.style.display = 'flex'
       bottleselect.style.display = 'flex'
