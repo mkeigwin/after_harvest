@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const maincider = document.querySelector('.mainBottlePic')
   const ciders = ["Pic/farm.jpg","Pic/regal.jpg","Pic/not.jpg","Pic/wild.jpg"]//make sure to also change in HTML
   ciderDiscriptions = ['The Farmhouse Brett is inoculated using Brettanomyces claussenii, a type of wild yeast found on the skins of fruit.  Brettanomyces yeasts are able to ferment longer chain saccharides and starches resulting in quite dry ciders.  The Farmhouse Brett exhibits the slightly funky characteristics of the yeast with flavors and aromas ranging from pineapple to the traditional Brett "horse blanket".',
-                      'The Regal Lager uses lager yeast opposed to the conventional ale yeast.  It is fermented slowly at a cool temperature, finishing in bottle conditioning with a lively carbonation and a crisp mouthfeel.  The lager yeast adds little flavor to the cider letting the natural flavors from the apples creating a pleasantly unique cider.',
+                      'The Regal Lager uses lager yeast opposed to the conventional ale yeast.  It is fermented slowly at a cool temperature, finishing in bottle conditioning with a lively carbonation and a crisp mouthfeel.  The lager yeast adds little flavor to the cider letting the natural flavors from the apples create a pleasantly unique cider.',
                       'The Nottingham is a traditional English style cider fermented with an English ale yeast.  It is naturally carbonated through bottle conditioning.  The Nottingham evenly combines the apples\' tannins, acidity, and sugar creating a well-rounded and balanced cider',
                       'The Wild is the product of natural fermentation.  The wild yeast and bacteria native to Kelly Orchards, which has been the site of apple orchards for over 70 years, gives this cider its unique flavor.  The Wild is slowly fermented at cellar temperatures over the winter months resulting in a unique tart and dry cider truly exhibiting the terroir of the orchard.']
   ciderAPVs = ['5.0% ABV','5.5% ABV','5.1% ABV','5.4% ABV']
@@ -37,9 +37,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const buffer = document.querySelector('.buffer')
   let scrollAway = 0
   let openedDisc = 0
+  let sectionCoords
+  const navItem = document.querySelectorAll('#navBar li')
+  const casey = document.querySelector('.casey')
+  const page3 = document.querySelector('.page3')
+  const footer = document.querySelector('footer')
+
 
   function resizeWindow() {
-    logoposition = logo.offsetTop + logo.height
+    logoposition = logo.offsetTop + logo.height;
+    navScrollCoord()
   }
   function debounce(func, wait = 0, immediate = true) {
     var timeout;
@@ -175,9 +182,45 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+//credit for scrolling function to http://stackoverflow.com/questions/8917921/cross-browser-javascript-not-jquery-scroll-to-top-animation
+  function scrollTo(element, to, duration) {
+    var start = element.scrollTop,
+        change = to - start,
+        increment = 20;
+    var animateScroll = function(elapsedTime) {
+        elapsedTime += increment;
+        var position = easeInOut(elapsedTime, start, change, duration);
+        element.scrollTop = position;
+        if (elapsedTime < duration) {
+            setTimeout(function() {
+                animateScroll(elapsedTime);
+            }, increment);
+        }
+    };
+    animateScroll(0);
+  }
+    function easeInOut(currentTime, start, change, duration) {
+      currentTime /= duration / 2;
+      if (currentTime < 1) {
+          return change / 2 * currentTime * currentTime + start;
+      }
+      currentTime -= 1;
+      return -change / 2 * (currentTime * (currentTime - 2) - 1) + start;
+  }
+
+  function navScrollCoord() {
+    sectionCoords = [0,casey.offsetTop - navcontainer.offsetHeight,page3.offsetTop - navcontainer.offsetHeight,footer.offsetTop - navcontainer.offsetHeight + 10]
+  }
+
+navItem[0].addEventListener('click',()=> {scrollTo(document.documentElement, sectionCoords[0], 1250)})
+navItem[1].addEventListener('click',()=> {scrollTo(document.documentElement, sectionCoords[1], 1250)})
+navItem[2].addEventListener('click',()=> {scrollTo(document.documentElement, sectionCoords[2], 1250)})
+navItem[3].addEventListener('click',()=> {scrollTo(document.documentElement, sectionCoords[3], 1250)})
+
   debounce(picturescroll)
   resizeWindow()
   picturescroll()
+  navScrollCoord()
   window.addEventListener('scroll', debounce(picturescroll))
   window.addEventListener("resize", resizeWindow,picturescroll,closeBox)
   window.addEventListener("resize", closeBox)

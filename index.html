@@ -26,10 +26,10 @@ document.getElementsByTagName('script')[0].parentNode.appendChild(script);
   <div class="navcontainer">
     <nav>
       <ul id='navBar'>
-        <li><a href="#main">Home</a></li>
-        <li><a href="#whoweare">Our Story</a></li>
-        <li><a href="#ourcider">Our Cider</a></li>
-        <li><a href="#contact">Find Us</a></li>
+        <li><a>Home</a></li>
+        <li><a>Our Story</a></li>
+        <li><a>Our Cider</a></li>
+        <li><a>Find Us</a></li>
       </ul>
     </nav>
     <a href="https://www.facebook.com/afterharvestcider/"><img src="Pic/logo.jpg" id="logo"></a>
@@ -91,16 +91,13 @@ document.getElementsByTagName('script')[0].parentNode.appendChild(script);
     <footer>
       <div id="map" style="height: 50vh; width: 50vw;"></div>
       <div class="footerdiv">
-        <div class="created"><span>Web Site Design by </span><a href="http://mattkeigwin.com"><span class="matt">Matt Keigwin</span></a></div>
         <div class="contactinfo">
-          <h2>Contact</h2>
-          <div class="contactlinks">
+          <!-- <div class="contactlinks"> -->
             <i class="fa fa-envelope fa-3x links mailbutton" id="mailbutton" aria-hidden="true" style="color:black"></i>
             <a href="https://www.facebook.com/afterharvestcider/"><i class="fa fa-facebook-square fa-3x" id="facebook" aria-hidden="true" style="color:black"></i></a>
-          </div>
+          <!-- </div> -->
         </div>
         <div class="partner">
-          <h2>Our Partner</h2>
           <a href="https://www.kellyorchards.com/index.html"><img src="Pic/kelly.png" id='partner'></a>
         </div>
       </div>
@@ -110,39 +107,110 @@ document.getElementsByTagName('script')[0].parentNode.appendChild(script);
 
 
 <script type="text/javascript">
-    var locations = [
-      ['The Brew Shoppe, Shapleigh', 43.495202, -70.846930, 4],
-      ['Tully\'s Beer and Wine, Wells', 43.300274, -70.584221, 5],
-      ['Lil General Store, Sanford', 43.410430, -70.742517, 3],
-      ['Cumming\'s Market, Kennebunk', 43.405466, -70.565059, 2],
-      ['H.B. Provisions, Kennebunk', 43.360103, -70.480580, 1],
-      ['Nature\'s Way Market, South Berwick', 43.234714, -70.809440, 6],
-      ['The Farm Stand, South Portland', 43.636814, -70.253078, 7],
-      ['Kelly Orchards, Acton', 43.529505, -70.908808, 8]
-    ];
-
 
 function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 43.431647, lng: -70.569759},
-          zoom: 9
-        })
-    var infowindow = new google.maps.InfoWindow();
-    var marker, i;
-    for (i = 0; i < locations.length; i++) {
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-        map: map
-      });
-      google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        return function() {
-          infowindow.setContent(locations[i][0]);
-          infowindow.open(map, marker);
-        }
-      })(marker, i));
-    }
- }
+          zoom: 9,
+          mapTypeId: 'roadmap'
+        });
+ var iconBase = 'https://maps.google.com/mapfiles/kml/paddle/';
+        var icons = {
+          one: {
+            icon: iconBase + '1.png'
+          },
+          two: {
+            icon: iconBase + '2.png'
+          },
+          three: {
+            icon: iconBase + '3.png'
+          },
+          four: {
+            icon: iconBase + '4.png'
+          },
+          five: {
+            icon: iconBase + '5.png'
+          },
+          six: {
+            icon: iconBase + '6.png'
+          },
+          seven: {
+            icon: iconBase + '7.png'
+          },
+          orchard: {
+            icon: iconBase + 'grn-stars.png'
+          }
+        };
 
+        var features = [
+          {
+            position: new google.maps.LatLng(43.360103, -70.480580),
+            type: 'one',
+            index:1,
+            store:'H.B. Provisions, Kennebunk',
+            url:'http://www.hbprovisions.com/'
+          }, {
+            position: new google.maps.LatLng(43.405466, -70.565059),
+            type: 'two',
+            index:2,
+            store:'Cumming\'s Market, Kennebunk',
+            url:'https://www.facebook.com/CummingsMarket/'
+          }, {
+            position: new google.maps.LatLng(43.410430, -70.742517),
+            type: 'three',
+            index:3,
+            store:'Lil General Store, Sanford',
+            url:'https://www.facebook.com/pages/Lil-General-Store/1599726010280231'
+          }, {
+            position: new google.maps.LatLng(43.495202, -70.846930),
+            type: 'four',
+            index:4,
+            store:'The Brew Shoppe, Shapleigh',
+            url:'https://www.facebook.com/TheBrewShoppe/'
+          }, {
+            position: new google.maps.LatLng(43.300274, -70.584221),
+            type: 'five',
+            index:5,
+            store:'Tully\'s Beer and Wine, Wells',
+            url:'http://tullysbeerandwine.com/beer/'
+          }, {
+            position: new google.maps.LatLng(43.234714, -70.809440),
+            type: 'six',
+            index:6,
+            store:'Nature\'s Way Market, South Berwick',
+            url:'https://www.facebook.com/pages/Natures-Way-Market/534236746694876'
+          }, {
+            position: new google.maps.LatLng(43.636814, -70.253078),
+            type: 'seven',
+            index:7,
+            store:'The Farm Stand, South Portland',
+            url:'https://www.facebook.com/TheFarmStand207/'
+          }, {
+            position: new google.maps.LatLng(43.529505, -70.908808),
+            type: 'orchard',
+            index:8,
+            store:'Kelly Orchards, Acton',
+            url:'https://www.kellyorchards.com/'
+          }
+        ];
 
+features.forEach(function(feature) {
+  var marker = new google.maps.Marker({
+    position: feature.position,
+    icon: icons[feature.type].icon,
+    map: map,
+    zIndex: feature.index,
+    url: feature.url,
+    store: feature.store
+  });
+  google.maps.event.addListener(marker, 'click', function() {
+    var infowindow = new google.maps.InfoWindow({
+      content: this.store+'<br/><br/><a style="color:blue;text-decoration: underline;" href="' + this.url + '">' + 'Website Link' + '</a>'
+    });
+    infowindow.open(map, marker);
+  });
+});
+
+}
 </script>
 </html>
