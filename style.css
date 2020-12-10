@@ -301,11 +301,12 @@ nav li:hover{
   background-color: #EEEEEE;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  /*justify-content: space-around;*/
   align-items: center;
   z-index: 2;
-  overflow: hidden;
+  /*overflow: hidden;*/
   position: relative;
+  overflow-y: scroll;
 }
 
 .slider{
@@ -315,6 +316,10 @@ nav li:hover{
   background-color: grey;
   opacity: .5;
   top: 17.5vh;
+}
+
+.firstPic{
+  margin-top: 10px
 }
 
 .selectPic {
@@ -402,19 +407,36 @@ footer {
   flex-direction: row;
 }*/
 
-.contactinfo .fa {
+/*.contactinfo .fa {
   margin-right: 5vw;
   margin-left: 5vw;
-}
+}*/
 
-.fa {
+/*.fa {
   margin: 2vw;
 }
 
 .fa:hover {
   cursor: pointer;
   color: #6fa5fc !important;
+}*/
+
+
+.contactinfo .fab {
+  margin-right: 5vw;
+  margin-left: 5vw;
 }
+
+.fab {
+  margin: 2vw;
+}
+
+.fab:hover {
+  cursor: pointer;
+  color: #6fa5fc !important;
+}
+
+
 
 .partner {
   border-left: 2px solid black;

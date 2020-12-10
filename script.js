@@ -3,13 +3,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const differentciders = document.querySelectorAll('.selectPic')
   const bottleselect = document.querySelector('.bottleselect')
   const maincider = document.querySelector('.mainBottlePic')
-  const ciders = ["Pic/farm.jpg","Pic/regal.jpg","Pic/not.jpg","Pic/wild.jpg"]//make sure to also change in HTML
+  const ciders = ["Pic/farm.jpg","Pic/regal.jpg","Pic/not.jpg","Pic/wild.jpg","Pic/blue.JPG","Pic/freestone.jpg","Pic/galena.JPG","Pic/staghorn.jpg"]//make sure to also change in HTML
   ciderDiscriptions = ['The Farmhouse Brett is inoculated using Brettanomyces claussenii, a type of wild yeast found on the skins of fruit.  Brettanomyces yeasts are able to ferment longer chain saccharides and starches resulting in quite dry ciders.  The Farmhouse Brett exhibits the slightly funky characteristics of the yeast with flavors and aromas ranging from pineapple to the traditional Brett "horse blanket".',
                       'The Regal Lager uses lager yeast opposed to the conventional ale yeast.  It is fermented slowly at a cool temperature, finishing in bottle conditioning with a lively carbonation and a crisp mouthfeel.  The lager yeast adds little flavor to the cider letting the natural flavors from the apples create a pleasantly unique cider.',
                       'The Nottingham is a traditional English style cider fermented with an English ale yeast.  It is naturally carbonated through bottle conditioning.  The Nottingham evenly combines the apples\' tannins, acidity, and sugar creating a well-rounded and balanced cider',
-                      'The Wild is the product of natural fermentation.  The wild yeast and bacteria native to Kelly Orchards, which has been the site of apple orchards for over 70 years, gives this cider its unique flavor.  The Wild is slowly fermented at cellar temperatures over the winter months resulting in a unique tart and dry cider truly exhibiting the terroir of the orchard.']
-  ciderAPVs = ['5.0% ABV','5.5% ABV','5.1% ABV','5.4% ABV']
-  ciderNames = ['Farmhouse Brett','Regal Lager','Nottingham','Wild']
+                      'The Wild is the product of natural fermentation.  The wild yeast and bacteria native to Kelly Orchards, which has been the site of apple orchards for over 70 years, gives this cider its unique flavor.  The Wild is slowly fermented at cellar temperatures over the winter months resulting in a unique tart and dry cider truly exhibiting the terroir of the orchard.',
+                      'Royal Blue is wild fermented in primary then fruited with whole Kelly Orchards blueberries during secondary for several months.  The resulting cider is a beautiful pinkish dry cider with clean acidic blueberry notes.  Wild yeast on the blueberry skins adds to the unique flavor of this cider',
+                      'Freestone Peach is wild fermented in primary then fruited with ripe Kelly Orchards peaches for secondary fermentation.  These juicy peaches lend their hazy texture to the cider and when fermented create a pleasant near-dry cider reminiscent of a hot summer day in the orchard.',
+                      'The Galena is wild fermented in primary and dry hopped during secondary using whole Galena hops grown, harvested, and dried by us.  Galena hops are a high-alpha variety resulting in a clean and balanced cider with slight citrus and grass aromas.',
+                      'Staghorn is wild fermented in primary then the fuzzy bright red berries of the staghorn sumac are added for secondary fermentation.  The staghorn sumac is a wild shrub native to Maine.  The berries are very tangy and tannic by themselves yet bring a balanced raspberry lemonade flavor to the cider.']
+  ciderAPVs = ['5.0% ABV','5.5% ABV','5.1% ABV','5.4% ABV','?% ABV','?% ABV','?% ABV','?% ABV']
+  ciderNames = ['Farmhouse Brett','Regal Lager','Nottingham','Wild','Royal Blue','Freestone Peach', 'Galena', 'Staghorn']
   let timer = 1
   let pictureCurrentlyOn = 1
   const bottlecontainer = document.querySelector('.bottlecontainer')
@@ -24,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const navcontainer = document.querySelector('.navcontainer')
   let logoposition = logo.offsetTop + logo.height
   const finalPic = document.querySelector('.finalpic')
-  const mailbutton = document.querySelector('#mailbutton')
+  // const mailbutton = document.querySelector('#mailbutton')
   const navname = document.querySelector('.afterharvest')
   const cidername = document.querySelector('.cidername')
   const ciderapv = document.querySelector('.ciderapv')
@@ -229,5 +233,5 @@ navItem[3].addEventListener('click',()=> {scrollTo(document.documentElement, sec
   differentciders.forEach((cider) => cider.addEventListener('mouseover', selectCider))
   maincider.addEventListener('click', openDisc)
   fullDescButton.addEventListener('click', openDisc)
-  mailbutton.addEventListener('click', () => location.href = 'mailto:info@afterharvestcider.com?subject=After Harvest Inquiry')
+  // mailbutton.addEventListener('click', () => location.href = 'mailto:info@afterharvestcider.com?subject=After Harvest Inquiry')
 })
