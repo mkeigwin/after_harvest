@@ -79,7 +79,10 @@ document.addEventListener("DOMContentLoaded", () => {
     timer = 1
   }
 
-
+const API_KEY= 'AIzaSyDCnrUTeB7z2g7dTRkw6DG3g4ESAmiIjuM'
+var script = document.createElement('script');
+script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`;
+document.getElementsByTagName('script')[0].parentNode.appendChild(script);
 
   setInterval(() => {
  if (timer >= 5) {
