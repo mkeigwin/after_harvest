@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
                       'Freestone Peach is wild fermented in primary then fruited with ripe Kelly Orchards peaches for secondary fermentation.  These juicy peaches lend their hazy texture to the cider and when fermented create a pleasant near-dry cider reminiscent of a hot summer day in the orchard.',
                       'The Galena is wild fermented in primary and dry hopped during secondary using whole Galena hops grown, harvested, and dried by us.  Galena hops are a high-alpha variety resulting in a clean and balanced cider with slight citrus and grass aromas.',
                       'Staghorn is wild fermented in primary then the fuzzy bright red berries of the staghorn sumac are added for secondary fermentation.  The staghorn sumac is a wild shrub native to Maine.  The berries are very tangy and tannic by themselves yet bring a balanced raspberry lemonade flavor to the cider.']
-  ciderAPVs = ['5.0% ABV','5.5% ABV','5.1% ABV','5.4% ABV','?% ABV','?% ABV','?% ABV','?% ABV']
+  ciderAPVs = ['5.0% ABV','5.5% ABV','5.1% ABV','5.4% ABV','5.5% ABV','5.5% ABV','5.3% ABV','5.5% ABV']
   ciderNames = ['Farmhouse Brett','Regal Lager','Nottingham','Wild','Royal Blue','Freestone Peach', 'Galena', 'Staghorn']
   let timer = 1
   let pictureCurrentlyOn = 1
@@ -79,10 +79,16 @@ document.addEventListener("DOMContentLoaded", () => {
     timer = 1
   }
 
-const API_KEY= 'AIzaSyDCnrUTeB7z2g7dTRkw6DG3g4ESAmiIjuM'
-var script = document.createElement('script');
-script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`;
-document.getElementsByTagName('script')[0].parentNode.appendChild(script);
+
+// Add api key to const and uncommect script. Also to add map comment out #storelist and uncomment #map in html
+
+// const API_KEY= 'add key here'
+// var script = document.createElement('script');
+// script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`;
+// document.getElementsByTagName('script')[0].parentNode.appendChild(script);
+
+
+
 
   setInterval(() => {
  if (timer >= 5) {

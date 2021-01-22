@@ -378,6 +378,14 @@ footer {
   margin-top: 5vh;
 }
 
+#storeList{
+  margin-top: 5vh;
+  color: #edeeef
+}
+#storeList p{
+  margin: 1vh;
+}
+
 .footerdiv{
   width: 100vw;
   display: flex;
